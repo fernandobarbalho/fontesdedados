@@ -34,4 +34,7 @@ purrr::map_dfr(1:length(mcr2030_brasil), function(i){
   
 })
 
+df_mcr2030_brasil %>%
+  readr::write_csv("mcr2030_brasil.csv")
+
 
