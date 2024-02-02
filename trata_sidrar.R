@@ -29,34 +29,33 @@ gera_trimestres<- function(anos){
 }
 
 
-gera_trimestres<- function(anos){
-  purrr::map_chr(anos, function(ano){
-    print(ano)
-    str_trimestres<-
-      purrr::map_chr(1:3, function(trimestre){
-        print(trimestre)
-        texto<-str_c(ano,"0",trimestre)
-        print(texto)
-        texto
-      })
-    print(str_trimestres)
-    str_trimestres
+
+gera_trimestres<- function(ano){
+  
+  ano<-ano
+  purrr::map_chr(1:3, function(trimestre){
+    stringr::str_c(ano,"0", trimestre)
   })
 }
 
 
-gera_trimestres(2022:2023)
+
+lista_trimestres<- unlist(lapply(1996:2023, gera_trimestres)) 
+
+
+
 
 cnt_vt<- 
   get_sidra(x = 6612,
-            period = as.character(c("199601":"202303")))
+            period = lista_trimestres)
 
 cnt_vt <- janitor::clean_names(cnt_vt)
 
+
 cnt_vt %>%
-  filter(setores_e_subsetores == "Comércio") %>%
-  ggplot(aes(x= trimestre_codigo, y= valor)) +
-  geom_col()
+  filter(setores_e_subsetores_codigo %in% c("90687", "90691", "90696")) %>%
+  ggplot(aes(x = trimestre_codigo, y = valor, group = setores_e_subsetores, color = setores_e_subsetores)) +
+  geom_line() 
 
 
 simula_energia_eletrica<-
