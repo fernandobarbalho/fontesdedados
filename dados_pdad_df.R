@@ -138,3 +138,40 @@ dados_grafico %>%
 
 
 names(deslocamentos_escola)
+
+
+library(readr)
+PDAD_2021_Domicilios <- read_delim("PDAD_2021-Domicilios.csv", 
+                                   delim = ";", escape_double = FALSE,locale = locale(decimal_mark = ",", 
+                                                                                      grouping_mark = "."), trim_ws = TRUE)
+
+
+library(readr)
+PDAD_2021_Moradores <- read_delim("PDAD_2021-Moradores.csv", 
+                                  delim = ";", escape_double = FALSE, locale = locale(decimal_mark = ",", 
+                                                                                      grouping_mark = "."), trim_ws = TRUE)
+
+
+unique(PDAD_2021_Moradores$PESO_MOR)
+
+(PDAD_2021_Moradores$idade[1] * PDAD_2021_Moradores$PESO_MOR[1])
+
+
+media_idade<- mean(PDAD_2021_Moradores$idade)
+
+media_idade_ponderada <- weighted.mean(PDAD_2021_Moradores$idade, PDAD_2021_Moradores$PESO_MOR)
+
+media_idade
+
+media_idade_ponderada
+
+
+PDAD_2021_Moradores$I20[1]
+
+
+media_remuneracao<- mean(PDAD_2021_Moradores$I20[!(PDAD_2021_Moradores$I20 %in% c(77777, 88888, 99999 ))])
+media_remuneracao_ponderada <- weighted.mean(PDAD_2021_Moradores$I20[!(PDAD_2021_Moradores$I20 %in% c(77777, 88888, 99999 ))], 
+                                             PDAD_2021_Moradores$PESO_MOR[!(PDAD_2021_Moradores$I20 %in% c(77777, 88888, 99999 ))])
+
+media_remuneracao
+media_remuneracao_ponderada
