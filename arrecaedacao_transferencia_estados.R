@@ -1,5 +1,6 @@
 library(tesseract)
 library(stringr)
+library(tidyverse)
 
 
 text<- ocr("ma11.png")
@@ -22,4 +23,13 @@ df_trabalho<- df[,-2]
 
 df_trabalho[8,9]<-"35647"
 
+# Função para converter colunas para numérico, exceto a primeira
+convert_to_numeric_except_first <- function(df) {
+  df <- df %>%
+    mutate_at(vars(-1), as.numeric) # -1 indica todas as colunas exceto a primeira
+  return(df)
+}
 
+# Exemplo de uso
+df_trabalho <- df_trabalho %>%
+  convert_to_numeric_except_first()
