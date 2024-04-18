@@ -92,11 +92,4 @@ df_trabalho_receita$total <- df_trabalho_receita$total*10
 df_trabalho_receita%>%
   writexl::write_xlsx("receitas_uniao_uf.xlsx")
 
-df_trabalho %>%
-  filter(uf!="Total") %>%
-  pivot_longer(cols = -1,
-               names_to = "rubrica",
-               values_to = "valor") %>%
-  filter(rubrica=="total")
-  
 
