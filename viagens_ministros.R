@@ -61,4 +61,32 @@ estados %>%
   )
 
   
+top_6_cidades<-
+  (viagens_ministros %>%
+  filter(situacao == "Realizada") %>%
+  summarise(quantidade = n(),
+            .by = destinos) %>%
+  ungroup() %>%
+  slice_max(order_by = quantidade, n=6))$destinos
+  
 
+viagens_ministros %>%
+  filter(situacao == "Realizada",
+         destinos %in% top_6_cidades) %>%
+  summarise(quantidade = n(),
+            .by = c(destinos,nome)) %>%
+  ungroup() %>%
+  mutate(destinos = fct_reorder(destinos, quantidade,sum),
+         nome = fct_reorder(nome, quantidade, sum)) %>%
+  ggplot(aes(x=quantidade, y= nome, fill = quantidade)) +
+  geom_col(show.legend = FALSE) +
+  geom_text(aes(label = quantidade), hjust= -0.1, size =2.8, color  = "white") +
+  scale_fill_continuous_sequential(palette = "Heat 2") +
+  theme_light() +
+  theme(
+    panel.grid = element_blank(),
+    panel.background = element_rect(fill = "black")
+  ) +
+  facet_wrap(destinos ~.)
+
+  
