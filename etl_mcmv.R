@@ -137,9 +137,52 @@ alerta_mapbiomas %>%
   summarise(total_estado = sum(state_area))
             
 
-fab<-
+sub_set_modelo<-
 alerta_mapbiomas %>%
+  filter(vector_pressure %in% c("urban_expansion", "agriculture")) %>%
   summarise(area_total_cidade = sum(city_area),
-            .by = c(vector_pressure, city_name, state_name, year_detected, biome_name, pnrh_level_1_basin_name, pnrh_level_2_basin_name)) %>%
-  pivot_wider(names_from = vector_pressure, values_from = area_total_cidade)
-  
+            .by = c(vector_pressure, city_name, state_name, year_detected, biome_name)) %>%
+  pivot_wider(names_from = vector_pressure, values_from = area_total_cidade) %>%
+  mutate(year_detected =as.factor(year_detected)) %>%
+  filter(urban_expansion > 0) %>%
+  select(-city_name) %>%
+  mutate(agriculture = log(agriculture) )
+
+
+cor.test(log(sub_set_modelo$urban_expansion), log(sub_set_modelo$agriculture))
+modelo<- lm(urban_expansion~., data = sub_set_modelo)
+
+summary(modelo)
+
+library(performance)
+
+
+
+performance::check_model(modelo)
+
+
+
+
+
+
+
+
+modelo2<- lm(log(urban_expansion)~., data = sub_set_modelo)
+
+summary(modelo2)
+
+
+performance::check_model(modelo2)
+
+alerta_mapbiomas %>%
+  filter(vector_pressure %in% c("urban_expansion", "agriculture")) %>%
+  summarise(area_total_cidade = sum(city_area),
+            .by = c(vector_pressure, city_name, state_name, year_detected, biome_name)) %>%
+  pivot_wider(names_from = vector_pressure, values_from = area_total_cidade) %>%
+  mutate(year_detected =as.factor(year_detected)) %>%
+  select(-city_name) %>%
+  ggplot() +
+  geom_point(aes(x=agriculture, y=urban_expansion))+
+  scale_x_log10() +
+  scale_y_log10()
+
