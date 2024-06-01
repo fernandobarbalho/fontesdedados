@@ -40,6 +40,11 @@ mcmv_ogu<-
 mcmv_ogu %>%
   limpar_coluna("qtd_uh_vigentes")
 
+
+saveRDS(mcmv_fgts, "mcmv_fgts.rds" )
+
+saveRDS(mcmv_ogu, "mcmv_ogu.rds")
+
 ###Endereço para consulta de propostas aceitas dentro do MCMV-FAR
 https://www.in.gov.br/en/web/dou/-/portaria-mcid-n-1.482-de-21-de-novembro-de-2023-524905456
 
@@ -62,19 +67,25 @@ id_recurso<- "9751a5d2-63a7-47a2-9038-d6b3a43d7286"
 tb_ckan<-
 ckanr::resource_show(id= id_recurso, url = url_ckan)
 
+tb_ckan$description
 
 url_resource<- "https://dadosabertos.cidades.gov.br/dataset/40298ef4-7fe0-4921-aed8-3ff369087de0/resource/9751a5d2-63a7-47a2-9038-d6b3a43d7286/download/base-selehab-julho-2022-csv.csv" 
 
 download.file(url_resource, destfile = "SELEHAB.csv", mode = "wb")
 
 
-SELEHAB <- read_csv("SELEHAB.csv")
+selehab_ate_15jul2022 <- read_csv("SELEHAB.csv")
 
-tb_ckan$description
+selehab_ate_15jul2022 <- janitor::clean_names(selehab_ate_15jul2022)
+
+saveRDS(selehab_ate_15jul2022, "selehab_ate_15jul2022.rds")
+
 
 
 alerta_mapbiomas <- read_excel("RAD2023_ALL_Alerts_2019-2023 - SITE.xlsx", 
                                                 sheet = "BD_RAD2022_ALERTAS_2019-2023")
+
+saveRDS(alerta_mapbiomas, "alerta_mapbiomas.RDS")
 
 unique(alerta_mapbiomas$vector_pressure)
 
