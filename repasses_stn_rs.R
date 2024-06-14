@@ -56,3 +56,6 @@ names(df_repasse_total) <- c("municipio", "valor_repasse", "num_repasse")
 df_repasse_total %>%
   distinct(municipio) %>%
   mutate(uf = "RS") %>%
+  readr::write_csv("municipios_repasse_rs.csv")
+
+municipios_repasse_rs_ibge <- read_csv("municipios_repasse_rs_updated.csv")
