@@ -59,3 +59,5 @@ df_repasse_total %>%
   readr::write_csv("municipios_repasse_rs.csv")
 
 municipios_repasse_rs_ibge <- read_csv("municipios_repasse_rs_updated.csv")
+
+saveRDS(municipios_repasse_rs_ibge,"municipios_repasse_rs_ibge.rds")
