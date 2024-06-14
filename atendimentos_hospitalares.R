@@ -1,3 +1,5 @@
+library(tidyverse)
+
 internacoes_rs_principais_cidades <- read_csv("Deslocamentos e gastos hospitalares dos municípios.csv", 
                                               locale = locale(decimal_mark = ",", grouping_mark = "."))
 
@@ -34,7 +36,16 @@ internacoes_trabalho %>%
   summarise(total_entrada = sum(entrada_de_paciente),
             total_atendimento_local = sum(atendimento_local),
             total_atendimento = total_entrada+total_atendimento_local,
-            .by = tipo_registro)
+            .by = tipo_registro) %>%
+  writexl::write_xlsx("tabela_resumo.xlsx")
+
+
+internacoes_trabalho %>%
+  mutate(tipo_registro = ifelse(is.na(tipo_registro),"Não registrado", tipo_registro) ) %>%
+  filter(codigo_municipio!="431490") %>%
+  select(municipio, tipo_registro,entrada_de_paciente, atendimento_local, ) %>%
+  slice_max(order_by = entrada_de_paciente, n=10) %>%
+  writexl::write_xlsx("dez_cidades_pos_poa.xlsx")
 
 
 
