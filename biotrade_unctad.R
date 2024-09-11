@@ -93,6 +93,39 @@ unctad %>%
   slice_sample(n= 20)
 
 
+brazil_sample_2<-
+  unctad %>%
+  filter(str_sub(product,1,2)== "B_" ,
+         economy_label == "Brazil") %>%
+  slice_sample(n= 20)
+
+
+brazil_sample_3<-
+  unctad %>%
+  filter(str_length(product) %in% 3:4 ,
+         economy_label == "Brazil") %>%
+  slice_sample(n= 20)
+
+brazil_sample_4<-
+  unctad %>%
+  filter(product == "B_F" ,
+         economy_label == "Brazil") %>%
+  slice_sample(n= 20)
+
+
+brazil_sample_5<-
+  unctad %>%
+  filter(str_length(product) == 3 ,
+         economy_label == "Brazil") %>%
+  slice_sample(n= 20)
+
+
+economias_distintas<-
+  unctad %>%
+  filter(str_length(product) == 3 ,
+         economy_label == "Brazil")  %>%
+  distinct(partner, partner_label)
+
 str_detect("Vegetable saps and extracts of ephedr", "[;]")
 
 
