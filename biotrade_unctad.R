@@ -126,9 +126,10 @@ economias_distintas<-
          economy_label == "Brazil")  %>%
   distinct(partner, partner_label)
 
-str_detect("Vegetable saps and extracts of ephedr", "[;]")
+
+brazil_full<-
+  unctad %>%
+  filter(economy_label == "Brazil")
 
 
-ifelse(str_detect("Vegetable saps and extracts; of ephedr", "[;]", negate = TRUE), 
-       "Vegetable saps and extracts; of ephedr", 
-       str_extract("Vegetable saps and extracts; of ephedr", ".+(?=[;])"))
+brazil_full %>% saveRDS("brazil_full.rds")
