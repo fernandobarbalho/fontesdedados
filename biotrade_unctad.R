@@ -133,3 +133,11 @@ brazil_full<-
 
 
 brazil_full %>% saveRDS("brazil_full.rds")
+
+brazil_full %>%
+  filter(partner < 1400,
+         product_label == "B_TOT", 
+         flow == 14) %>%
+  summarise(total = sum(us_dollars_at_current_prices_in_thousands),
+            .by =partner_label) %>%
+  slice_max(order_by = partner_label, n= 10)
