@@ -136,6 +136,26 @@ names(tabela_chisq) <- c("partido", "resultado", "residuo_padrao")
 
 tabela_chisq %>%
   filter(resultado == "Eleito") %>%
-  mutate(partido = reorder(partido, residuo_padrao)) %>%
+  mutate(partido = reorder(partido, residuo_padrao),
+         sinal = sign(residuo_padrao)) %>%
   ggplot(aes(x= residuo_padrao, y=partido)) +
-  geom_col()
+  geom_col(aes(fill = as.character(sinal)), show.legend = FALSE) +
+  geom_vline(aes(xintercept = -2), linetype= "dashed", color = "black") +
+  geom_vline(aes(xintercept = 2), linetype= "dashed", color = "black") +
+  geom_text(aes(y="REDE", x= 8, label= str_wrap("Valores > 2 são significativos",20))) +
+  geom_text(aes(y="UNIÃO", x= -8, label= str_wrap("Valores < -2 são significativos",20))) +
+  geom_text(aes(y="PC do B", x= 8, label= str_wrap("Cinco partidos desempenharam melhor do que o estatisticamente esperado",20))) +
+  geom_text(aes(y="MOBILIZA", x= -10, label= str_wrap("PT: pior desempenho comparando o estatisticamente esperado com o realizado",20))) +
+  scale_fill_discrete_qualitative(palette = "Dark 2") +
+  theme_light() +
+  theme(
+    panel.grid = element_blank()
+  ) +
+  annotate("segment", x=2, y="REDE", yend = "REDE", xend  = 4.5,  arrow = arrow(length = unit(0.2, "cm")), linewidth = 1) +
+  annotate("segment", x=-2, y="UNIÃO", yend = "UNIÃO", xend  = -4.5,  arrow = arrow(length = unit(0.2, "cm")), linewidth = 1) +
+  annotate("segment", x=-11, y="PDT", yend = "PSOL", xend  = -12,  arrow = arrow(length = unit(0.2, "cm")), linewidth = 1)+
+  labs(title = "Prefeitos eleitos:diferença entre o esperado e o observado",
+       subtitle = "Ranking das discrepâncias",
+       x="",
+       y="")
+
