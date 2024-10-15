@@ -29,25 +29,38 @@ top_10_eventos<-
 
 seguranca_publica %>%
   filter(total_vitimas > 0) %>%
-  pivot_longer(cols = feminino:nao_informado, names_to = "sexo", values_to = "quantidade") %>%
+  pivot_longer(cols = feminino:nao_informado, names_to = "genero", values_to = "quantidade") %>%
   summarise(soma = sum(quantidade, na.rm = TRUE),
-            .by=c(sexo )) %>%
-  mutate(sexo = reorder(sexo, soma )) %>%
+            .by=c(genero )) %>%
+  mutate(genero = reorder(genero, soma )) %>%
   ggplot() +
-  geom_col(aes(x= soma, y= sexo)) +
+  geom_col(aes(x= soma, y= genero)) +
+  theme_light() +
   theme(
     legend.position = "bottom"
+  ) +
+  labs(
+    title = "Vítimas por gênero",
+    x="",
+    y=""
   )
 
 
 seguranca_publica %>%
   filter(total_vitimas > 0) %>%
   mutate(evento = fct_reorder(evento, total_vitimas, sum)) %>%
-  pivot_longer(cols = feminino:nao_informado, names_to = "sexo", values_to = "quantidade") %>%
+  pivot_longer(cols = feminino:nao_informado, names_to = "genero", values_to = "quantidade") %>%
   summarise(soma = sum(quantidade, na.rm = TRUE),
-            .by=c(evento, sexo )) %>%
+            .by=c(evento, genero )) %>%
   ggplot() +
-  geom_col(aes(x= soma, y= evento, fill = sexo)) +
+  geom_col(aes(x= soma, y= evento, fill = genero)) +
+  theme_light() +
   theme(
     legend.position = "bottom"
+  )+
+  labs(
+    title = "Vítimas por tipo de evento e gênero",
+    fill = "Gênero",
+    x="",
+    y=""
   )
