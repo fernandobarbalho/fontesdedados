@@ -15,7 +15,11 @@ variacao<-
 
 variacao_trabalho<-
 variacao %>%
+  filter(!code %in% c("PRECOS12_IPCASP12"),
+         date >= "1995-02-01") %>%
   inner_join(series_disponiveis)
+
+writexl::write_xlsx(variacao_trabalho, "series_ipca.xlsx")
   
 variacao_trabalho$variacao_acumulada <- 100
 
@@ -24,3 +28,8 @@ variacao_trabalho %>%
   group_by(code) %>%
   mutate(lag_value = lag(value, n=1)) %>%
   mutate(variacao_acumulada =  ifelse(is.na(lag_value), 100 * (1+value/100), lag(variacao_acumulada, n=1) * (1+value/100)))
+
+
+library(readxl)
+series_ipca_numero_indice <- read_excel("series_ipca_numero_indice.xlsx")
+
