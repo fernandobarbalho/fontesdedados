@@ -1,5 +1,6 @@
 library(readxl)
 library(tidyverse)
+library(jsonlite)
 
 #Dados de emissão de gases de efeito estufa e receita utilizados no Índice Carbono Eficiente (ano-base 2021)
 #fonte: https://www.b3.com.br/pt_br/market-data-e-indices/indices/indices-de-sustentabilidade/indice-carbono-eficiente-ico2-emissao-de-gases.htm
@@ -18,3 +19,10 @@ ico2_b3 %>%
     empresas_setores %>%
       rename(empresa = nome_da_empresa)
   )
+
+
+
+indices_open_sustentability<-
+  jsonlite::fromJSON("https://api.opensustainabilityindex.org/v1/companies?api-key=demo&limit=99&offset=99")
+
+empresas_open_sustentability<-  indices_open_sustentability[["data"]]
