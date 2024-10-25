@@ -1,0 +1,260 @@
+empresa,setor,pais_sede
+Abanca,NA,Spain
+Abbott Laboratories,NA,United States
+AcadeMedia,NA,Sweden
+AddLife,NA,Sweden
+Aflac,NA,United States
+Agricultural Bank of China,NA,China
+Ahold Delhaize,NA,Netherlands
+Aktia Bank,NA,Finland
+Alibaba Group,NA,China
+Allianz,NA,Germany
+Allstate,NA,United States
+Ambea,NA,Sweden
+American International Group,NA,United States
+Anglo American,NA,United Kingdom
+ANZ,NA,Australia
+AQ Group,NA,Sweden
+Archer Daniels Midland,NA,United States
+ASML Holding,NA,Netherlands
+Attendo,NA,Sweden
+Baidu,NA,China
+Banco Bradesco,NA,Brazil
+Bank of America,NA,United States
+Bank of China,NA,China
+Bank of Montreal,NA,Canada
+Bank of New York Mellon,NA,United States
+Bank of Nova Scotia,NA,Canada
+Barclays,NA,United Kingdom
+Bavarian Nordic,NA,Denmark
+BBVA-Banco Bilbao Vizcaya,NA,Spain
+Becton Dickinson,NA,United States
+Bilia,NA,Sweden
+Björn Borg,NA,Sweden
+BlackRock,NA,United States
+BP,NA,United Kingdom
+British American Tobacco,NA,United Kingdom
+Brookfield Corporation,NA,Canada
+Bure Equity,NA,Sweden
+BYD,NA,China
+Camurus,NA,Sweden
+Canadian Imperial Bank,NA,Canada
+Canadian Natural Resources,NA,Canada
+Capital One,NA,United States
+Catella,NA,Sweden
+Caterpillar,NA,United States
+Centene,NA,United States
+Charter Communications,NA,United States
+China Citic Bank,NA,China
+China Construction Bank,NA,China
+China Everbright Bank,NA,China
+China Evergrande Group,NA,China
+China Life Insurance,NA,China
+China Merchants Bank,NA,China
+China Minsheng Bank,NA,China
+China Mobile,NA,China
+China Pacific Insurance,NA,China
+China Shenhua Energy,NA,China
+China State Construction Engineering,NA,China
+China Telecom,NA,China
+China Vanke,NA,China
+Chubb,NA,United States
+Cigna,NA,United States
+CITIC,NA,China
+Citigroup,NA,United States
+CK Hutchison,NA,Hong Kong
+CNOOC,NA,China
+Commonwealth Bank,NA,Australia
+ConocoPhillips,NA,United States
+Contemporary Amperex Technology,NA,China
+Costco Wholesale,NA,United States
+Country Garden Holdings,NA,China
+Daimler,NA,Germany
+DBS,NA,Singapore
+Deutsche Bank,NA,Germany
+Deutsche Post,NA,Germany
+Dometic Group,NA,Sweden
+Doro,NA,Sweden
+Dow,NA,United States
+Duke Energy,NA,United States
+Dustin Group,NA,Sweden
+E.ON,NA,Germany
+Eastnine AB (publ),NA,Sweden
+EH Group AB,NA,Sweden
+Elevance Health,NA,United States
+Eli Lilly,NA,United States
+Enbridge,NA,Canada
+Enea,NA,Sweden
+Eni,NA,Italy
+EOG Resources,NA,United States
+Equinor,NA,Norway
+Evolution,NA,Sweden
+ExxonMobil,NA,United States
+Facebook,NA,United States
+FedEx,NA,United States
+Fortnox,NA,Sweden
+Fresenius,NA,Germany
+Fubon Financial,NA,Taiwan
+GANT Holding AB,NA,Sweden
+GARO,NA,Sweden
+General Electric,NA,United States
+Generali,NA,Italy
+Genmab,NA,Denmark
+Glencore,NA,Switzerland
+Goldman Sachs Group,NA,United States
+Google,NA,United States
+Handelsbanken,NA,Sweden
+Hansa Biopharma,NA,Sweden
+HDFC,NA,India
+HDFC Bank,NA,India
+Honda Motor,NA,Japan
+HSBC Holdings,NA,United Kingdom
+Hyundai Motor,NA,South Korea
+IBM,NA,United States
+ICBC,NA,China
+ICICI Bank,NA,India
+Industrial Bank,NA,China
+Industrivärden,NA,Sweden
+Intel,NA,United States
+Intrum,NA,Sweden
+Investor,NA,Sweden
+INVISIO,NA,Sweden
+Itaú Unibanco Holding,NA,Brazil
+Itochu,NA,Japan
+Japan Post Holdings,NA,Japan
+JD.com,NA,China
+JM,NA,Sweden
+JPMorgan Chase,NA,United States
+Jyske Bank,NA,Denmark
+KABE Group,NA,Sweden
+Kinnevik,NA,Sweden
+Lagercrantz Group,NA,Sweden
+Latour,NA,Sweden
+Legal & General,NA,United Kingdom
+Lifco AB,NA,Sweden
+Lime Technologies,NA,Sweden
+Lloyds Banking,NA,United Kingdom
+Lockheed Martin,NA,United States
+Longfor Group Holdings,NA,China
+Lowe's,NA,United States
+Lundbergföretagen LE,NA,Sweden
+Mandatum,NA,Finland
+Manulife,NA,Canada
+Marathon Petroleum,NA,United States
+Medicover,NA,Sweden
+Merck & Co.,NA,United States
+Metso,NA,Finland
+Micron Technology,NA,United States
+Mitsubishi,NA,Japan
+Mitsubishi UFJ Financial,NA,Japan
+Mitsui,NA,Japan
+Mizuho Financial,NA,Japan
+Morgan Stanley,NA,United States
+MTG,NA,Sweden
+Munich Re,NA,Germany
+Munters Group AB,NA,Sweden
+Møller-Maersk,NA,Denmark
+NAB - National Australia Bank,NA,Australia
+NCC AB,NA,Sweden
+Neste Oyj,NA,Finland
+Netlight,NA,Sweden
+New Wave Group,NA,Sweden
+NextEra Energy,NA,United States
+NIBE Industrier,NA,Sweden
+Nielsen (Europe 2019),NA,United States
+Nielsen (Global 2019),NA,United States
+Nielsen (Global 2020),NA,United States
+Nippon Telegraph & Tel,NA,Japan
+Nordea Bank abp,NA,Finland
+Nordic Waterproofing Holding,NA,Sweden
+Nordnet AB,NA,Sweden
+Nordsteds,NA,Sweden
+Norion Bank,NA,Sweden
+Northrop Grumman,NA,United States
+NVIDIA,NA,United States
+Nyfosa,NA,Sweden
+Occidental Petroleum,NA,United States
+Oil & Natural Gas,NA,India
+Oracle,NA,United States
+Orexo AB,NA,Sweden
+Orrön Energy,NA,Sweden
+Oversea-Chinese Banking,NA,Singapore
+Panasonic,NA,Japan
+Paradox Interactive,NA,Sweden
+Peab,NA,Sweden
+PetroChina,NA,China
+Phillips 66,NA,United States
+PICC,NA,China
+Ping An Insurance Group,NA,China
+Plantasjen Holding AS,NA,Norway
+PNC Financial Services,NA,United States
+Poly Developments & Holdings Group,NA,China
+Porsche Automobil Holding,NA,Germany
+Postal Savings Bank Of China (PSBC),NA,China
+Power Corp of Canada,NA,Canada
+PowerCell Group,NA,Sweden
+Prudential,NA,United Kingdom
+PTT,NA,Thailand
+Publicis Group,NA,France
+Qatar National Bank,NA,Qatar
+Ratos AB,NA,Sweden
+Raytheon Technologies,NA,United States
+RBC,NA,Canada
+Reliance Industries,NA,India
+Resurs Holding AB (publ),NA,Sweden
+Roche Holding,NA,Switzerland
+Rottneros,NA,Sweden
+Salesforce,NA,United States
+Samsung Electronics,NA,South Korea
+Santander,NA,Spain
+SAP,NA,Germany
+SAS,NA,Sweden
+Saudi Arabian Oil Company (Saudi Aramco),NA,Saudi Arabia
+SCA,NA,Sweden
+Scandic Hotels Group,NA,Sweden
+Sdiptech,NA,Sweden
+SEB,NA,Sweden
+Sectra,NA,Sweden
+Serneke Group AB (publ),NA,Sweden
+Shell,NA,United Kingdom
+Sinopec,NA,China
+SK Hynix,NA,South Korea
+Southern Company,NA,United States
+State Bank of India,NA,India
+Stellantis NV,NA,Netherlands
+Strawberry,NA,Norway
+Sumitomo Mitsui Financial,NA,Japan
+Sun Life Financial,NA,Canada
+Suncor Energy,NA,Canada
+Svedbergs Group,NA,Sweden
+Swedish Orphan Biovitrum,NA,Sweden
+Sydbank,NA,Denmark
+Taiwan Semiconductor,NA,Taiwan
+TD Bank Group,NA,Canada
+TechnipFMC,NA,United Kingdom
+Tobii,NA,Sweden
+Tobii Dynavox,NA,Sweden
+TotalEnergies SE,NA,France
+Traton,NA,Germany
+Travelers,NA,United States
+Truist Financial,NA,United States
+Tryg,NA,Denmark
+TUIfly Nordic AB,NA,Sweden
+UBS,NA,Switzerland
+UniCredit,NA,Italy
+Uniper SE,NA,Germany
+United Parcel Service,NA,United States
+Valero Energy,NA,United States
+Veidekke Entreprenad,NA,Norway
+Verizon Communications,NA,United States
+Vimian Group,NA,Sweden
+Vitec Software Group,NA,Sweden
+Vitol,NA,Switzerland
+VNV Global,NA,Sweden
+Volati,NA,Sweden
+Wells Fargo,NA,United States
+Westpac Banking Group,NA,Australia
+World Courier Sweden AB,NA,Sweden
+Wärtsilä Oyj,NA,Finland
+Xano Industri,NA,Sweden
+Zealand Pharma A/S,NA,Denmark
