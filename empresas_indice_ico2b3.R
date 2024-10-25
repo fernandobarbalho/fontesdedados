@@ -9,31 +9,41 @@ ico2_b3 <- read_excel("ico2_b3.xlsx")
 
 ico2_b3<- janitor::clean_names(ico2_b3)
 
-empresas_setores <- read_csv("empresas_setores.csv")
-empresas_setores<- janitor::clean_names(empresas_setores)
 
+
+empresas_setores <- read_excel("empresas_brasileiras_nova_classificacao.xlsx")
+empresas_setores<- janitor::clean_names(empresas_setores)
 
 ico2_b3_empresas<-
 ico2_b3 %>%
   left_join(
     empresas_setores %>%
-      rename(empresa = nome_da_empresa)
+      rename(empresa = nome_da_empresa,
+             setor = nova_classificacao_de_setor)
   )
 
 
 
 
-empresas_open_sustentability<-
-map_dfr(1:6, function(inc){
+
+
+  
+empresas_open_sustentability<-  
+map_dfr(0:6, function(inc){
+  
+  inicio<- 1+ inc*100
+  fim<- (inc+1) *100
+  
   
   print(inc)
   
-  url<- paste("https://api.opensustainabilityindex.org/v1/companies?api-key=demo&limit=",inc,"&offset=",inc*100)
+  url<- paste0("https://api.opensustainabilityindex.org/v1/companies?api-key=demo&limit=",fim,"&offset=",inicio)
+  #vide documentação da APE em https://www.opensustainabilityindex.org/api
   
   print(url)
   
   indices_open_sustentability<-
-    jsonlite::fromJSON("https://api.opensustainabilityindex.org/v1/companies?api-key=demo&limit=99&offset=99")
+    jsonlite::fromJSON(url)
   
   indices_open_sustentability[["data"]]
   
@@ -41,8 +51,33 @@ map_dfr(1:6, function(inc){
 })
 
 
+
+
+
+
 #valor médio do dólar em 2021
 valor_dolar_medio<- 5.3950 #fonte: http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=31924
 
 
-unique(empresas_open_sustentability$industry)
+
+de_para_categorias <- read_csv("Tabela_Atualizada_de_Tradu__o_de_Categorias.csv")
+
+de_para_categorias <- janitor::clean_names(de_para_categorias)
+
+
+de_para_categorias$categoria_em_portugues
+
+
+empresas_open_sustentability %>%
+  filter(is.na(industry) | is.na(hq_country)) %>%
+  select(company_name, industry, hq_country) %>%
+  rename(empresa = company_name,
+         setor = industry,
+         pais_sede = hq_country) %>%
+  distinct(empresa, setor, pais_sede) %>%
+  readr::write_csv("empresas_setor_pais.csv")
+  
+de_para_categorias %>%
+  select(categoria_em_portugues)%>%
+  rename(setor_economia = categoria_em_portugues) %>%
+  readr::write_csv("setor_economia.csv")
