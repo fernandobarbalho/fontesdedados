@@ -22,7 +22,27 @@ ico2_b3 %>%
 
 
 
-indices_open_sustentability<-
-  jsonlite::fromJSON("https://api.opensustainabilityindex.org/v1/companies?api-key=demo&limit=99&offset=99")
 
-empresas_open_sustentability<-  indices_open_sustentability[["data"]]
+empresas_open_sustentability<-
+map_dfr(1:6, function(inc){
+  
+  print(inc)
+  
+  url<- paste("https://api.opensustainabilityindex.org/v1/companies?api-key=demo&limit=",inc,"&offset=",inc*100)
+  
+  print(url)
+  
+  indices_open_sustentability<-
+    jsonlite::fromJSON("https://api.opensustainabilityindex.org/v1/companies?api-key=demo&limit=99&offset=99")
+  
+  indices_open_sustentability[["data"]]
+  
+  
+})
+
+
+#valor médio do dólar em 2021
+valor_dolar_medio<- 5.3950 #fonte: http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=31924
+
+
+unique(empresas_open_sustentability$industry)
