@@ -1,0 +1,150 @@
+empresa,setor,pais_sede
+Abbott Laboratories,"Pharmaceuticals, Biotechnology and Life Sciences",NA
+Aflac,"Banks, Diverse Financials, Insurance",NA
+Agricultural Bank of China,"Banks, Diverse Financials, Insurance",NA
+Ahold Delhaize,Food and Staples Retailing,NA
+Aktia Bank,"Banks, Diverse Financials, Insurance",NA
+Alibaba Group,Software and Services,NA
+Allianz,"Banks, Diverse Financials, Insurance",NA
+Allstate,"Banks, Diverse Financials, Insurance",NA
+American International Group,"Banks, Diverse Financials, Insurance",NA
+Anglo American,"Mining - Iron, Aluminum, Other Metals",NA
+ANZ,"Banks, Diverse Financials, Insurance",NA
+Archer Daniels Midland,Food and Beverage Processing,NA
+ASML Holding,Semiconductors and Semiconductors Equipment,NA
+Baidu,Software and Services,NA
+Banco Bradesco,"Banks, Diverse Financials, Insurance",NA
+Bank of America,"Banks, Diverse Financials, Insurance",NA
+Bank of China,"Banks, Diverse Financials, Insurance",NA
+Bank of Montreal,"Banks, Diverse Financials, Insurance",NA
+Bank of New York Mellon,"Banks, Diverse Financials, Insurance",NA
+Bank of Nova Scotia,"Banks, Diverse Financials, Insurance",NA
+Barclays,"Banks, Diverse Financials, Insurance",NA
+Bavarian Nordic,"Pharmaceuticals, Biotechnology and Life Sciences",NA
+BBVA-Banco Bilbao Vizcaya,"Banks, Diverse Financials, Insurance",NA
+Becton Dickinson,Healthcare Equipment and Supplies,NA
+BlackRock,"Banks, Diverse Financials, Insurance",NA
+BP,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+British American Tobacco,Tobacco,NA
+BYD,Automobiles and Components,NA
+Canadian Imperial Bank,"Banks, Diverse Financials, Insurance",NA
+Canadian Natural Resources,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Capital One,"Banks, Diverse Financials, Insurance",NA
+Caterpillar,Electrical Equipment and Machinery,NA
+Centene,"Healthcare Providers and Services, and Healthcare Technology",NA
+Charter Communications,Telecommunication Services,NA
+China Construction Bank,"Banks, Diverse Financials, Insurance",NA
+China Life Insurance,"Banks, Diverse Financials, Insurance",NA
+China Mobile,Telecommunication Services,NA
+China Pacific Insurance,"Banks, Diverse Financials, Insurance",NA
+China Telecom,Telecommunication Services,NA
+Chubb,"Banks, Diverse Financials, Insurance",NA
+Cigna,"Healthcare Providers and Services, and Healthcare Technology",NA
+Citigroup,"Banks, Diverse Financials, Insurance",NA
+CNOOC,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Commonwealth Bank,"Banks, Diverse Financials, Insurance",NA
+ConocoPhillips,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Costco Wholesale,Food and Staples Retailing,NA
+Daimler,Automobiles and Components,NA
+DBS,"Banks, Diverse Financials, Insurance",NA
+Deutsche Bank,"Banks, Diverse Financials, Insurance",NA
+Deutsche Post,Air Freight Transportation and Logistics,NA
+Dow,Chemicals,NA
+Duke Energy,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+E.ON,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Elevance Health,"Healthcare Providers and Services, and Healthcare Technology",NA
+Eli Lilly,"Pharmaceuticals, Biotechnology and Life Sciences",NA
+Enbridge,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Eni,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+EOG Resources,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Equinor,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+ExxonMobil,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Facebook,Software and Services,NA
+FedEx,Air Freight Transportation and Logistics,NA
+Fresenius,"Healthcare Providers and Services, and Healthcare Technology",NA
+Fubon Financial,"Banks, Diverse Financials, Insurance",NA
+General Electric,Electrical Equipment and Machinery,NA
+Generali,"Banks, Diverse Financials, Insurance",NA
+Glencore,"Mining - Iron, Aluminum, Other Metals",NA
+Goldman Sachs Group,"Banks, Diverse Financials, Insurance",NA
+Google,Software and Services,NA
+Handelsbanken,"Banks, Diverse Financials, Insurance",NA
+HDFC,"Banks, Diverse Financials, Insurance",NA
+HDFC Bank,"Banks, Diverse Financials, Insurance",NA
+Honda Motor,Automobiles and Components,NA
+HSBC Holdings,"Banks, Diverse Financials, Insurance",NA
+Hyundai Motor,Automobiles and Components,NA
+IBM,Software and Services,NA
+ICBC,"Banks, Diverse Financials, Insurance",NA
+ICICI Bank,"Banks, Diverse Financials, Insurance",NA
+Industrial Bank,"Banks, Diverse Financials, Insurance",NA
+Intel,Semiconductors and Semiconductors Equipment,NA
+Intrum,"Banks, Diverse Financials, Insurance",NA
+Itaú Unibanco Holding,"Banks, Diverse Financials, Insurance",NA
+Japan Post Holdings,Air Freight Transportation and Logistics,NA
+JD.com,Retailing,NA
+JPMorgan Chase,"Banks, Diverse Financials, Insurance",NA
+Legal & General,"Banks, Diverse Financials, Insurance",NA
+Lloyds Banking,"Banks, Diverse Financials, Insurance",NA
+Lockheed Martin,Aerospace and Defense,NA
+Lowe's,Retailing,NA
+Manulife,"Banks, Diverse Financials, Insurance",NA
+Marathon Petroleum,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Merck & Co.,"Pharmaceuticals, Biotechnology and Life Sciences",NA
+Micron Technology,Semiconductors and Semiconductors Equipment,NA
+Mitsubishi,"Trading Companies and Distributors, and Commercial Services and Supplies",NA
+Mitsubishi UFJ Financial,"Banks, Diverse Financials, Insurance",NA
+Mitsui,"Trading Companies and Distributors, and Commercial Services and Supplies",NA
+Mizuho Financial,"Banks, Diverse Financials, Insurance",NA
+Morgan Stanley,"Banks, Diverse Financials, Insurance",NA
+Munich Re,"Banks, Diverse Financials, Insurance",NA
+Møller-Maersk,Air Freight Transportation and Logistics,NA
+NAB - National Australia Bank,"Banks, Diverse Financials, Insurance",NA
+NextEra Energy,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Nippon Telegraph & Tel,Telecommunication Services,NA
+Nordea Bank abp,"Banks, Diverse Financials, Insurance",NA
+Northrop Grumman,Aerospace and Defense,NA
+NVIDIA,Semiconductors and Semiconductors Equipment,NA
+Occidental Petroleum,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Oil & Natural Gas,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Oracle,Software and Services,NA
+Oversea-Chinese Banking,"Banks, Diverse Financials, Insurance",NA
+Panasonic,Technology Hardware and Equipment,NA
+PetroChina,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Phillips 66,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+PICC,"Banks, Diverse Financials, Insurance",NA
+Ping An Insurance Group,"Banks, Diverse Financials, Insurance",NA
+PNC Financial Services,"Banks, Diverse Financials, Insurance",NA
+Prudential,"Banks, Diverse Financials, Insurance",NA
+PTT,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Qatar National Bank,"Banks, Diverse Financials, Insurance",NA
+Raytheon Technologies,Aerospace and Defense,NA
+RBC,"Banks, Diverse Financials, Insurance",NA
+Reliance Industries,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Roche Holding,"Pharmaceuticals, Biotechnology and Life Sciences",NA
+Salesforce,Software and Services,NA
+Samsung Electronics,Technology Hardware and Equipment,NA
+Santander,"Banks, Diverse Financials, Insurance",NA
+SAP,Software and Services,NA
+Saudi Arabian Oil Company (Saudi Aramco),"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Shell,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Sinopec,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+SK Hynix,Semiconductors and Semiconductors Equipment,NA
+Southern Company,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+State Bank of India,"Banks, Diverse Financials, Insurance",NA
+Stellantis NV,Automobiles and Components,NA
+Sumitomo Mitsui Financial,"Banks, Diverse Financials, Insurance",NA
+Sun Life Financial,"Banks, Diverse Financials, Insurance",NA
+Suncor Energy,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Taiwan Semiconductor,Semiconductors and Semiconductors Equipment,NA
+TD Bank Group,"Banks, Diverse Financials, Insurance",NA
+TotalEnergies SE,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Travelers,"Banks, Diverse Financials, Insurance",NA
+Truist Financial,"Banks, Diverse Financials, Insurance",NA
+UBS,"Banks, Diverse Financials, Insurance",NA
+UniCredit,"Banks, Diverse Financials, Insurance",NA
+United Parcel Service,Air Freight Transportation and Logistics,NA
+Valero Energy,"Electric Utilities and Independent Power Producers and Energy Traders (including fossil, alternative and nuclear energy)",NA
+Verizon Communications,Telecommunication Services,NA
+Wells Fargo,"Banks, Diverse Financials, Insurance",NA
+Westpac Banking Group,"Banks, Diverse Financials, Insurance",NA
