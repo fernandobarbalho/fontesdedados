@@ -67,6 +67,8 @@ de_para_categorias <- janitor::clean_names(de_para_categorias)
 
 de_para_categorias$categoria_em_portugues
 
+saveRDS(empresas_open_sustentability, "empresas_open_sustentability.rds")
+
 
 empresas_open_sustentability %>%
   filter(is.na(industry) | is.na(hq_country)) %>%
