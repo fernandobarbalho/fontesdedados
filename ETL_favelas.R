@@ -1,5 +1,7 @@
 library(sidrar)
 library(tidyverse)
+library(geobr)
+library(sf)
 
 info_sidra(9883, wb = TRUE)
 
@@ -24,3 +26,30 @@ favelas_trabalho<-
     cod_ibge = D1C,
     municipio = D1N
   )
+
+mapa_estados<- geobr::read_state()
+
+mapa_municipios<- geobr::read_municipality()
+
+mapa_municipios_seat<- geobr::read_municipal_seat()
+
+
+mapas_favela<-
+  mapa_municipios %>%
+  inner_join(
+    favelas_trabalho %>%
+      mutate(code_muni= as.numeric(cod_ibge))
+  )
+
+
+mapas_favela_seat<-
+  mapa_municipios_seat %>%
+  inner_join(
+    favelas_trabalho %>%
+      mutate(code_muni= as.numeric(cod_ibge))
+  )
+
+
+mapas_favela_seat %>%
+  ggplot() +
+  geom_sf(aes(size = quantidade))
