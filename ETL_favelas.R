@@ -2,6 +2,7 @@ library(sidrar)
 library(tidyverse)
 library(geobr)
 library(sf)
+library(colorspace)
 
 info_sidra(9883, wb = TRUE)
 
@@ -52,4 +53,31 @@ mapas_favela_seat<-
 
 mapas_favela_seat %>%
   ggplot() +
-  geom_sf(aes(size = quantidade))
+  geom_sf(data = mapa_estados, fill = NA) +
+  geom_sf(aes(size = quantidade, fill = quantidade), pch = 21 ,color = "black" ) +
+  scale_fill_continuous_sequential(palette= "Heat 2") +
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill = "black")
+  )
+
+mapas_favela_seat %>%
+  ggplot() +
+  geom_sf(data = mapa_estados, fill = NA) +
+  geom_sf(aes( fill = quantidade), pch = 21 ,color = "black" ) +
+  scale_fill_continuous_sequential(palette= "Heat 2") +
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill = "black")
+  )
+
+
+mapas_favela %>%
+  ggplot() +
+  geom_sf(data = mapa_estados, fill = NA) +
+  geom_sf(aes(fill= quantidade)) +
+  scale_fill_continuous_sequential(palette= "Heat 2") +
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill = "black")
+  )
