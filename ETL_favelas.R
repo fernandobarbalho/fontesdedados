@@ -67,15 +67,27 @@ mapas_favela_seat<-
 
 
 mapas_favela_seat %>%
-  filter(perc_acumulado <=0.80) %>%
+  filter(perc_acumulado <=0.8007775) %>%
   ggplot() +
   geom_sf(data = mapa_estados, fill = NA) +
-  geom_sf(aes(size = quantidade, fill = quantidade), pch = 21 ,color = "black" ) +
+  geom_sf(aes(size = quantidade), pch = 21 ,color = "black", fill= "white", alpha=0.5 ) +
   scale_fill_continuous_sequential(palette= "Heat 2") +
   theme_void() +
   theme(
-    panel.background = element_rect(fill = "black")
+    panel.background = element_rect(fill = "black"),
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5, size = 12),
+    
+  )+
+  labs(
+    title =  "As 130 cidades com maior número de favelas",
+    subtitle =  "Dados do censo de 2022",
+    #fill = "%",
+    caption = "Fonte: IBGE. Elaboração própria"
   )
+
+ggsave(filename = "quantidade_favela.jpg")
+
 
 mapas_favela_seat %>%
   slice_max(order_by = quantidade, n=20) %>%
@@ -98,7 +110,14 @@ mapas_favela %>%
   theme_void() +
   theme(
     panel.background = element_rect(fill = "black")
+  )+
+  labs(
+    title =  " brasileiras",
+    subtitle =  "Dados do Censo de 2022",
+    #fill = "%",
+    caption = "Fonte: IBGE. Elaboração: Fernando Barbalho"
   )
+
 
 
 ### Proporção de habitantes nas favelas por cor/raça
@@ -157,7 +176,7 @@ mapas_favela_cor_seat %>%
     title =  "Cor/raça nas favelas brasileiras",
     subtitle =  "Dados do Censo de 2022",
     fill = "%",
-    caption = "Fonte: IBGE. Elaboração: Fernando Barbalho"
+    caption = "Fonte: IBGE. Elaboração própria"
   )
 
 ggsave(filename = "cor_raca_favela.jpg")
