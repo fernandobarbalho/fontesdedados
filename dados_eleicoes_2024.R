@@ -28,6 +28,8 @@ num_municipios_estado<-
 
 partidos_filtro<- c("PSD", "MDB", "PP", "UNIÃO", "PL", "REPUBLICANOS", "PSB", "PSDB", "PT" )
 
+
+
 dados_grafico<-
   resultado_eleicao_2024 %>%
   filter(cargo == "Prefeito",
@@ -45,6 +47,28 @@ dados_grafico<-
   mutate(percentual_eleito = ifelse(is.na(percentual_eleito),0, percentual_eleito))
   
 
+
+dados_grafico_ce_pi<-
+  resultado_eleicao_2024 %>%
+  filter(cargo == "Prefeito",
+         situacao_candidato_turno == "Eleito",
+         uf %in% c("CE","PI")
+         ) %>%
+  summarise( quantidade = n(),
+             .by =c(sg_partido, uf) ) %>%
+  mutate(sg_partido =fct_reorder(sg_partido, quantidade, sum, .desc = TRUE)) %>%
+  inner_join(num_municipios_estado) %>%
+  mutate(percentual_eleito = (quantidade/num_municipios)*100) %>%
+  #filter(sg_partido %in% partidos_filtro) %>% 
+  left_join(
+    estados_sf %>%
+      rename(uf = abbrev_state)
+  ) %>%
+  mutate(percentual_eleito = ifelse(is.na(percentual_eleito),0, percentual_eleito))
+
+
+
+
 grafico<-  
 dados_grafico %>%
   ggplot() +
@@ -59,7 +83,24 @@ dados_grafico %>%
   ) +
   facet_wrap(sg_partido ~.) 
   
+grafico_ce_pi<-  
+  dados_grafico_ce_pi %>%
+  ggplot() +
+  geom_sf( aes(fill= percentual_eleito, geometry = geom)) +
+  scale_fill_continuous_sequential(palette = "Heat 2")+
+  theme_void() +
+  labs(
+    title = "Proporção de prefeitos eleitos por estado e partido",
+    subtitle = "Eleições 2024",
+    fill= "(%)",
+    caption = "Fonte: TSE. Elaboração: Fernando Barbalho"
+  ) +
+  facet_wrap(sg_partido ~.) 
+
+
 ggsave("resultados_prefeitos.png", plot = grafico, width = 10, height = 5, dpi = 300, type = "cairo-png")  
+
+ggsave("resultados_prefeitos_ce_pi.png", plot = grafico_ce_pi, width = 10, height = 5, dpi = 300, type = "cairo-png")  
   
 
 
