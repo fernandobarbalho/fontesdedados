@@ -4,6 +4,15 @@ library(geobr)
 library(sf)
 library(colorspace)
 
+
+mapa_estados<- geobr::read_state()
+
+mapa_municipios<- geobr::read_municipality()
+
+mapa_municipios_seat<- geobr::read_municipal_seat()
+
+mapa_bairros<- geobr::read_neighborhood()
+
 ############### Número de Favelas por cidade brasileira
 
 info_sidra(9883, wb = TRUE)
@@ -30,11 +39,6 @@ favelas_trabalho<-
     municipio = D1N
   )
 
-mapa_estados<- geobr::read_state()
-
-mapa_municipios<- geobr::read_municipality()
-
-mapa_municipios_seat<- geobr::read_municipal_seat()
 
 
 mapas_favela<-
@@ -181,3 +185,39 @@ mapas_favela_cor_seat %>%
 
 ggsave(filename = "cor_raca_favela.jpg")
 ggsave(filename = "cor_raca_favela.png")
+
+
+###Populações das favelas
+
+
+info_sidra(9888, wb = TRUE)
+
+favelas_populacao<-  
+  get_sidra(x = 9888,
+            #variable = c(11601,1607,11602), #12607 (número índice com ajustes sazonal), 11601 mês/mês anterior com ajustes sazonal, 11602 mês/mesmo mês do ano anterior 
+            variable = 9612,
+            #period = c("202301-202406"),
+            #period = c("last" = 12),
+            geo = "City",
+            #geo.filter = list("City"= 2304400),
+            #classific = c("C86"),
+            #category =  list(c(2776, 2777,2778,2779, 2780,  2781     )), #, 72118,72119, 12046
+            header = FALSE,
+            format = 3)
+
+
+info_sidra(9923, wb = TRUE)
+
+municipios_populacao<-
+  get_sidra(x = 9923,
+            #variable = c(11601,1607,11602), #12607 (número índice com ajustes sazonal), 11601 mês/mês anterior com ajustes sazonal, 11602 mês/mesmo mês do ano anterior 
+            variable = 93,
+            #period = c("202301-202406"),
+            #period = c("last" = 12),
+            geo = "City",
+            #geo.filter = list("City"= 2304400),
+            classific = c("C1"),
+            category =  list(c(6795)), #, 72118,72119, 12046
+            header = FALSE,
+            format = 3)
+
