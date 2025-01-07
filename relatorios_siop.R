@@ -23,8 +23,23 @@ extrato_siop_filtros %>%
 
 summary(extrato_siop_trabalho)
 
+dados_grafico<-
 extrato_siop_trabalho %>%
   summarise(depesa_total = sum(pago),
-            .by = c(ano, poder))
+            .by = c(ano, poder)) %>%
+  mutate(data_nominal = as.Date(paste(ano,"12","01", sep = "-")),
+         despesa_total_corrigida = ipca(depesa_total,data_nominal, "11/2024")) %>%
+  select(ano, poder, despesa_total_corrigida)
 
+dados_referencia_2010<-
+  dados_grafico %>%
+  filter(ano==2010) %>%
+  rename(depesa_total_corrigida_2010 = despesa_total_corrigida) %>%
+  select(poder, depesa_total_corrigida_2010 )
 
+dados_grafico<-
+dados_grafico %>%
+  inner_join(dados_referencia_2010) %>%
+  mutate(evolucao =  (despesa_total_corrigida/depesa_total_corrigida_2010)*100)
+
+ipca(100, as.Date("2023-12-01"), "11/2024")

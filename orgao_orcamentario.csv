@@ -1,0 +1,62 @@
+orgao_orcamentario, poder
+01000 - Camara dos Deputados,L
+02000 - Senado Federal,L
+03000 - Tribunal de Contas da União,L
+10000 - Supremo Tribunal Federal,J
+11000 - Superior Tribunal de Justiça,j
+12000 - Justiça Federal,J
+13000 - Justiça Militar da União,J
+14000 - Justiça Eleitoral,J
+15000 - Justiça do Trabalho,J
+16000 - Justiça do Distrito Federal e dos Territórios,J
+17000 - Conselho Nacional de Justiça,J
+20000 - Presidência da República,E
+20102 - Gabinete da Vice-Presidência da República,E
+20114 - Advocacia-Geral da União,E
+22000 - Ministério da Agricultura e Pecuária,E
+24000 - Ministério da Ciência, Tecnologia e Inovação,E
+25000 - Ministério da Fazenda,E
+26000 - Ministério da Educação,E
+28000 - Ministério do Desenvolvimento, Indústria, Comércio e Serviços,E
+30000 - Ministério da Justiça e Segurança Pública,E
+32000 - Ministério de Minas e Energia,E
+33000 - Ministério da Previdência Social,E
+34000 - Ministério Público da União,M 
+35000 - Ministério das Relações Exteriores,E
+36000 - Ministério da Saúde,E
+38000 - Ministério do Trabalho e Emprego,E
+39000 - Ministério dos Transportes,E
+41000 - Ministério das Comunicações,E
+42000 - Ministério da Cultura,E
+44000 - Ministério do Meio Ambiente e Mudança do Clima,E
+47000 - Ministério do Planejamento e Orçamento,E
+49000 - Ministério do Desenvolvimento Agrário e Agricultura Familiar,E
+51000 - Ministério do Esporte,E
+52000 - Ministério da Defesa,E
+53000 - Ministério da Integração e do Desenvolvimento Regional,E
+54000 - Ministério do Turismo,E
+55000 - Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome,E
+56000 - Ministério das Cidades,E
+58000 - Ministério da Pesca e Aquicultura,E
+59000 - Conselho Nacional do Ministério Público,M
+71000 - Encargos Financeiros da União,E
+73000 - Transferências a Estados, Distrito Federal e Municípios,E
+74000 - Operações Oficiais de Crédito,E
+60000 - Gabinete da Vice-Presidência da República,E
+61000 - Secretaria de Assuntos Estratégicos,E
+62000 - Secretaria de Aviação Civil,E
+63000 - Advocacia-Geral da União,E
+64000 - Ministério dos Direitos Humanos e da Cidadania,E
+65000 - Ministério das Mulheres,E
+66000 - Controladoria-Geral da União,E
+67000 - Ministério da Igualdade Racial,E
+68000 - Ministério de Portos e Aeroportos,E
+69000 - Ministério do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte,E
+29000 - Defensoria Pública da União,D
+40000 - Ministério do Trabalho e Emprego,E
+57000 - Ministério das Mulheres, da Igualdade Racial, da Juventude e dos Direitos Humanos,E
+37000 - Controladoria-Geral da União,E
+81000 - Ministério dos Direitos Humanos e da Cidadania,E
+83000 - Banco Central do Brasil,E
+46000 - Ministério da Gestão e da Inovação em Serviços Públicos,E
+84000 - Ministério dos Povos Indígenas,E
