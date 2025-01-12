@@ -63,7 +63,9 @@ cat(as.character(xml_parsed))
 # Extrair os dados específicos do XML
 # Suponha que os dados estão em elementos <Item>
 # Ajuste os nomes dos nós conforme o XML retornado pelo serviço
-data_nodes <- xml_find_all(xml_parsed, ".//Item")
+data_nodes <- xml_find_all(xml_parsed, ".//ItemDespesa")
+
+data_nodes<- xml_child(xml_child(xml_child(xml_child(xml_child(xml_parsed, 1), 1), 1), 3), 1)
 
 # Converter os dados para uma lista ou tibble
 data_list <- data_nodes %>%
