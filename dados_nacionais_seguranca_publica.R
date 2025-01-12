@@ -1,6 +1,7 @@
 library(readxl)
 library(tidyverse)
 library(lubridate)
+library(colorspace)
 
 https://www.gov.br/mj/pt-br/assuntos/sua-seguranca/seguranca-publica/estatistica/download/dnsp-base-de-dados/bancovde-2024-6.xlsx/@@download/file
 
@@ -184,6 +185,34 @@ seguranca_publica %>%
   facet_wrap(evento~., scales = "free_y")
 
 
+seguranca_publica %>%
+  filter(total_vitimas > 0,
+         between(month(data_referencia),1,12),
+         evento %in% c("Estupro", "Feminicídio") ) %>%
+  mutate(ano = as.character(year(data_referencia))) %>%
+  filter(ano<="2023") %>%
+  pivot_longer(cols = feminino:nao_informado, names_to = "genero", values_to = "quantidade") %>%
+  filter(genero == "feminino") %>%
+  summarise(soma = sum(quantidade, na.rm = TRUE),
+            .by=c(ano,evento )) %>%
+  ggplot() +
+  geom_col(aes(x= ano, y= soma)) +
+  theme_light() +
+  theme(
+    legend.position = "bottom",
+    panel.grid = element_blank()
+  ) +
+  labs(
+    title = "Vítimas femininas em crimes com predominância em mulheres",
+    #subtitle =  "Dados entre janeiro e agosto de cada ano",
+    caption = "Fonte: Ministério da Justiça. Elaboração: Fernando Barbalho",
+    x="",
+    y=""
+  )+
+  facet_wrap(evento~., scales = "free_y")
+
+
+
 var_feminicidio_2022_2024<- ((882/975)-1)*100
 var_feminicidio_2023_2024<- ((882/953)-1)*100
 
@@ -200,3 +229,102 @@ seguranca_publica %>%
             .by=c(ano,evento ))
 
 
+seguranca_publica %>%
+  filter(total_vitimas > 0,
+         between(month(data_referencia),1,12)) %>%
+  mutate(ano = year(data_referencia)) %>%
+  mutate(evento = fct_reorder(evento, total_vitimas, sum)) %>%
+  pivot_longer(cols = feminino:nao_informado, names_to = "genero", values_to = "quantidade") %>%
+  summarise(soma = sum(quantidade, na.rm = TRUE),
+            .by=c(ano,evento, genero )) %>%
+  ggplot() +
+  geom_col(aes(x= ano, y= soma, fill = genero)) +
+  theme_light() +
+  theme(
+    legend.position = "bottom"
+  )+
+  labs(
+    title = "Vítimas por tipo de evento e gênero",
+    fill = "Gênero",
+    subitle= "Dados entre janeiro e agosto de cada ano",
+    caption = "Fonte: Ministério da Justiça. Elaboração: Fernando Barbalho",
+    x="",
+    y=""
+  ) +
+  facet_wrap(evento~., scales = "free_y")
+
+seguranca_publica %>%
+  filter(total_vitimas > 0,
+         between(month(data_referencia),1,12)) %>%
+  mutate(ano = year(data_referencia)) %>%
+  mutate(evento = fct_reorder(evento, total_vitimas, sum)) %>%
+  pivot_longer(cols = feminino:nao_informado, names_to = "genero", values_to = "quantidade") %>%
+  summarise(soma = sum(quantidade, na.rm = TRUE),
+            .by=c(ano,evento, genero )) %>%
+  ggplot() +
+  geom_col(aes(x= ano, y= soma, fill = genero)) +
+  theme_light() +
+  theme(
+    legend.position = "bottom"
+  )+
+  labs(
+    title = "Vítimas por tipo de evento e gênero",
+    fill = "Gênero",
+    subitle= "Dados entre janeiro e agosto de cada ano",
+    caption = "Fonte: Ministério da Justiça. Elaboração: Fernando Barbalho",
+    x="",
+    y=""
+  ) +
+  facet_wrap(evento~., scales = "free_y")
+
+
+seguranca_publica %>%
+  filter(total_vitimas > 0,
+         between(month(data_referencia),1,12)) %>%
+  mutate(evento = fct_reorder(evento, total_vitimas, sum)) %>%
+  mutate(ano = year(data_referencia)) %>%
+  pivot_longer(cols = feminino:nao_informado, names_to = "genero", values_to = "quantidade") %>%
+  summarise(soma = sum(quantidade, na.rm = TRUE)/1000,
+            .by=c(evento, genero )) %>%
+  ggplot() +
+  geom_col(aes(x= soma, y= evento, fill = genero)) +
+  scale_fill_discrete_qualitative(palette = "Dark 2") +
+  theme_light() +
+  theme(
+    legend.position = "bottom",
+    panel.grid = element_blank()
+  )+
+  labs(
+    title = "Vítimas por tipo de evento e gênero",
+    fill = "Gênero",
+    subtitle =  "Acumulado entre 2015 e 2023.",
+    caption = "Fonte: Ministério da Justiça. Elaboração: Fernando Barbalho",
+    x="Número de ocorrências em milhares",
+    y=""
+  ) 
+
+
+seguranca_publica %>%
+  filter(total_vitimas > 0,
+         between(month(data_referencia),1,12),
+         evento %in% c("Estupro", "Feminicídio") ) %>%
+  mutate(ano = as.character(year(data_referencia))) %>%
+  filter(ano<="2023") %>%
+  pivot_longer(cols = feminino:nao_informado, names_to = "genero", values_to = "quantidade") %>%
+  filter(genero == "feminino") %>%
+  summarise(soma = sum(quantidade, na.rm = TRUE),
+            .by=c(ano,evento )) %>%
+  ggplot() +
+  geom_col(aes(x= ano, y= soma)) +
+  theme_light() +
+  theme(
+    legend.position = "bottom",
+    panel.grid = element_blank()
+  ) +
+  labs(
+    title = "Vítimas femininas em crimes com predominância em mulheres",
+    caption = "Fonte: Ministério da Justiça. Elaboração: Fernando Barbalho",
+    x="",
+    y=""
+  )+
+  facet_wrap(evento~., scales = "free_y")
