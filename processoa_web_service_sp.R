@@ -22,7 +22,9 @@ soap_body <- sprintf('
   <soap:Body>
     <ConsultarDespesas xmlns="http://fazenda.sp.gov.br/wstransparencia">
       <ano>2010</ano>
-      <codigoOrgao>20000</codigoOrgao>
+      <codigoOrgao>Detalhado</codigoOrgao>
+      <codigoFonteRecursos>Detalhado</codigoFonteRecursos>
+      <codigoFuncao>Detalhado</codigoFuncao>
       <codigoGrupo>31</codigoGrupo>
       <codigoModalidade>3190</codigoModalidade>
       <flagEmpenhado>0</flagEmpenhado>
@@ -51,9 +53,9 @@ response <- POST(
 if (status_code(response) == 200) {
   # Extrair o conteúdo da resposta
   xml_response <- content(response, as = "text", encoding = "UTF-8")
-  cat("Resposta do serviço:\n", content)
+  cat("Resposta do serviço:\n", xml_response)
 } else {
-  cat("Erro ao acessar o serviço: ", status_code(response), "\n")
+  cat("Erro ao acessar o serviço: ", status_code(xml_response), "\n")
 }
 
 
@@ -85,23 +87,25 @@ itens_despesa <- xml_find_all(doc, ".//d1:ItemDespesa", ns = ns)
 # Extraia os dados relevantes e crie um dataframe
 dados <- tibble(
   CodigoNomeOrgao = xml_text(xml_find_first(itens_despesa, ".//d1:CodigoNomeOrgao")),
+  CodigoNomeFonteRecursos = xml_text(xml_find_first(itens_despesa, ".//d1:CodigoNomeFonteRecursos")),
   CodigoNomeTipoLicitacao = xml_text(xml_find_first(itens_despesa, ".//d1:CodigoNomeTipoLicitacao")),
+  CodigoNomeFuncao = xml_text(xml_find_first(itens_despesa, ".//d1:CodigoNomeFuncao")),
   NaturezaDespesaNomeItem = xml_text(xml_find_first(itens_despesa, ".//d1:NaturezaDespesaNomeItem")),
   ValorEmpenhado = xml_text(xml_find_first(itens_despesa, ".//d1:ValorEmpenhado")),
   ValorLiquidado = xml_text(xml_find_first(itens_despesa, ".//d1:ValorLiquidado")),
   ValorPago = xml_text(xml_find_first(itens_despesa, ".//d1:ValorPago")),
-  ValorPagoAnosAnteriores = xml_text(xml_find_first(itens_despesa, ".d1://ValorPagoAnosAnteriores"))
+  ValorPagoAnosAnteriores = xml_text(xml_find_first(itens_despesa, ".//d1:ValorPagoAnosAnteriores"))
 )
 
 # Limpeza dos valores numéricos (removendo espaços e formatando)
-dados <- dados %>%
+dados <- 
+  dados %>%
   mutate(
-    ValorEmpenhado = as.numeric(gsub("[^0-9,]", "", ValorEmpenhado)),
-    ValorLiquidado = as.numeric(gsub("[^0-9,]", "", ValorLiquidado)),
-    ValorPago = as.numeric(gsub("[^0-9,]", "", ValorPago)),
-    ValorPagoAnosAnteriores = as.numeric(gsub("[^0-9,]", "", ValorPagoAnosAnteriores))
+    ValorEmpenhado = as.numeric(str_remove_all(ValorEmpenhado,"[.]") %>% str_replace_all("[,]",".")),
+    ValorLiquidado = as.numeric(str_remove_all(ValorLiquidado,"[.]") %>% str_replace_all("[,]",".")),
+    ValorPago = as.numeric(str_remove_all(ValorPago,"[.]") %>% str_replace_all("[,]",".")),
+    ValorPagoAnosAnteriores = as.numeric(str_remove_all(ValorPagoAnosAnteriores,"[.]") %>% str_replace_all("[,]","."))
   )
-
 
 
 
