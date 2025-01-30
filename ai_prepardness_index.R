@@ -22,7 +22,7 @@ trata_tabela<- function(ds_name, index_name){
 
 
 #trata índice de preparo para IA
-indice_preparo_ia<- trata_tabela("imf-dm-export-20250102.xls", "preparo_ia" )
+indice_preparo_ia<- trata_tabela( "imf-dm-export-20250128.xls" , "preparo_ia" ) #"imf-dm-export-20250102.xls"
 
 
 #trata índice de infraestrutura digital
@@ -61,3 +61,35 @@ consolidado_preparo_ia %>%
 
 consolidado_preparo_ia %>%
   filter(pais == "Brazil")
+
+dados_grafico<-
+  indice_preparo_ia %>%
+  filter(row_number()<=165) %>%
+  mutate(pais= ifelse(pais=="China, People's Republic of","China",pais)) %>%
+  mutate(pais = reorder(pais, desc(indice) ) ) %>%
+  slice_max(order_by = indice, n=80)
+  
+
+dados_grafico %>%
+  ggplot(aes(x = pais, y = indice, fill = pais == "China")) +
+  geom_col(show.legend = FALSE) +
+  geom_text(aes(label = ifelse(pais %in% c("Singapore", "China"), round(indice,2), "")), 
+            vjust = -0.5, 
+            color = "black",
+            size= 3) +
+  scale_fill_manual(values = c("TRUE" = "red", "FALSE" = "gray")) +
+  scale_y_continuous(expand =  c(0,0.1))+
+  theme_light() +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.1)
+  ) +
+  labs(
+    y = "AI Preparedness Index",
+    x = "",
+    title = str_wrap("Ranking de Preparação para a IA", 72),
+    subtitle = "A Posição da China Segundo o AI Preparedness Index",
+    caption = "Fonte: FMI (2023). Elaboração: Fernando Barbalho"
+  )
+
+ggsave(filename = "ranking_40_aipi.png",  units = "cm", width = 20, height = 9.04, dpi = 300)
