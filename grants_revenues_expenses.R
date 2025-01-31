@@ -113,34 +113,40 @@ paises_sel<-
   filter(iso_three_letters_code %in% c("USA","BRA","ZAF"))
 
 
+mapa<-
 dados_mapa_despesa_ppp %>%
   ggplot() +
   geom_sf(aes(fill= despesa_uss_ppp)) +
   geom_sf_label(data = paises_sel, 
-                aes(label = str_wrap(paste(iso_three_letters_code, round(despesa_uss_ppp,1)),3)),
-                size= 2.5,
+                aes(label = str_wrap(paste(iso_three_letters_code,"US$", round(despesa_uss_ppp,1),"bi"),20)),
+                size= 2.8,
                 alpha = 0.5,
                 fontface = "bold"
                ) +
-  geom_sf_label(x=-160,y=40, 
-                aes(label= str_wrap("EUA respondem por 44,4% da ajuda a países estrangeiros *",30)),
-                size= 2.5,
+  geom_sf_text(x=-160,y=40, 
+                aes(label= str_wrap("EUA respondem por 44,4% das doações a países estrangeiros *",35)),
+                size= 2.8,
                 alpha = 0.5,
-                fontface = "bold")+
-  geom_sf_label(x=-27,y=40, 
-                aes(label= str_wrap("Alemanha e França: 60% das ajudas europeias *",15)),
-                size= 2.5,
+               color = "white",
+               fontface = "bold"
+               )+
+  geom_sf_text(x=-25,y=45, 
+                aes(label= str_wrap("Alemanha e França: 60% das doações europeias *",15)),
+                size= 2.8,
                 alpha = 0.5,
+               color = "white",
                 fontface = "bold")+
-  geom_sf_label(x=15,y=-50, 
+  geom_sf_text(x=15,y=-40, 
                 aes(label= str_wrap("África do Sul lidera entre os BRICS *",40)),
-                size= 2.5,
+                size= 2.8,
                 alpha = 0.5,
+               color = "white",
                 fontface = "bold")+
-  geom_sf_label(x=160,y=20, 
-                aes(label= str_wrap("Países asiáticos: média de ajuda = US$ 0,2 bi*",30)),
-                size= 2.5,
+  geom_sf_text(x=155,y=25, 
+                aes(label= str_wrap("Países asiáticos: média de doações = US$ 0,2 bi *",30)),
+                size= 2.8,
                 alpha = 0.5,
+               color = "white",
                 fontface = "bold")+
 
   scale_fill_continuous_sequential(palette= "Heat 2" )+
@@ -158,10 +164,14 @@ dados_mapa_despesa_ppp %>%
   ) +
   coord_sf(xlim = c(-180,180), ylim=c(-60,90))+
   labs(
-    title = "Despesa com ajuda financeira internacional por país em 2021",
+    title = "Doações para outros países em 2021",
     fill= str_wrap("US$ bi PPP", 10),
     caption = "* Considerando os países que forneceram dados ao FMI. Fonte: Banco Mundial e FMI. Elaboração própria"
   ) 
+
+ggsave(filename = "mapa_doacoes.jpeg", plot= mapa, width = 13.3, height = 7.5)
+
+#tamanho 1051 x 638
 
 69.4/sum(dados_mapa_despesa_ppp$despesa_uss_ppp, na.rm=TRUE)
 
