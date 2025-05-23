@@ -8,13 +8,9 @@ library(colorspace)
 dados_receitas_grants<- read_csv("GFSR_01-30-2025 11-30-35-94_timeSeries/GFSR_01-30-2025 11-30-35-94_timeSeries.csv")
 View(GFSR_01_30_2025_11_30_35_94_timeSeries)
 
+
+
 de_para_nome_codigo_pais <- read_csv("de_para_nome_codigo_pais.csv")
-
-# dados_despesas_grants_trabalho %>% 
-#   distinct(country_name) %>%
-#   readr::write_csv("country_list.csv")
-
-
 
 
 dados_receitas_grants_trabalho<-
@@ -72,9 +68,6 @@ dados_despesas_grants_trabalho %>%
 data("world")
 
 
-faltantes<-
-  dados_receitas_grants_trabalho %>%
-  anti_join(world)
 
 
 world %>%
@@ -164,9 +157,9 @@ dados_mapa_despesa_ppp %>%
   ) +
   coord_sf(xlim = c(-180,180), ylim=c(-60,90))+
   labs(
-    title = "Doações para outros países em 2021",
+    title = "Doações a países estrangeiros em 2021",
     fill= str_wrap("US$ bi PPP", 10),
-    caption = "* Considerando os países que forneceram dados ao FMI. Fonte: Banco Mundial e FMI. Elaboração própria"
+    caption = "* Considerando os países que forneceram dados ao FMI. Fonte: Banco Mundial e FMI. Elaboração: Fernando Barbalho"
   ) 
 
 ggsave(filename = "mapa_doacoes.jpeg", plot= mapa, width = 13.3, height = 7.5)
