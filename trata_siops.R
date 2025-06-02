@@ -118,6 +118,10 @@ sipos_mun_2023_trabalho<-
 
 saveRDS(sipos_mun_2023_trabalho, "sipos_mun_2023_trabalho.rds")
 
+writexl::write_xlsx(sipos_mun_2023_trabalho, "siops_mun_2023_trabalho.xlsx")
+
+
+
 sipos_mun_2024<-
   
   map_dfr(municipios_seis_digitos$id_municipio_6, function(municipio){
