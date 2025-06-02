@@ -109,7 +109,14 @@ sipos_mun_2023<-
     
   })
 
-#procurar por ASPS
+#procurar por ASPS (id 44 para municípios)
+
+sipos_mun_2023_trabalho<-
+  
+  sipos_mun_2023 %>%
+  filter(id==44)
+
+saveRDS(sipos_mun_2023_trabalho, "sipos_mun_2023_trabalho.rds")
 
 sipos_mun_2024<-
   
