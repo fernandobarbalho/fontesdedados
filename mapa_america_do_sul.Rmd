@@ -1,3 +1,12 @@
+---
+title: "mapa américa do sul"
+author: "Fernando Almeida Barbalho"
+date: '2025-06-12'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
 library(readxl)
 library(geobr)
 library(tidyverse)
@@ -8,43 +17,12 @@ library(colorspace)
 
 data("world")
 
-
-#mapa mundi
-
-
-world %>%
-  ggplot() +
-  geom_sf(aes(fill=pop/10^6)) +
-  scale_fill_continuous_sequential(palette= "Heat 2" )+
-  theme_void() +
-  theme(
-    panel.background = element_rect(fill="#0077be")
-  ) +
-  labs(
-    fill= str_wrap("População em milhões de habitantes", 10)
-  )
-
-
-world %>%
-  ggplot() +
-  geom_sf(aes(fill=pop)) +
-  scale_fill_continuous_sequential(palette= "Heat 2", trans= "log2" )+
-  theme_void() +
-  theme(
-    panel.background = element_rect(fill="#0077be"),
-    legend.position = "none"
-  )
-
-
-total_pib_america_sul<-
-  (world %>%
-  filter(continent == "South America") %>%
-  summarise(pib_continente =  sum(gdpPercap * pop, na.rm = TRUE)))$pib_continente
-
-
-
-
 transformed_data <- read_csv("percentual_pib_por_ano.csv")
+```
+
+
+```{r fig.dpi=300}
+
 
 # Criar um vetor com os códigos de países
 codigos_paises <- c("ARG", "BOL", "BRA", "CHL", "COL", "ECU", "PER", "PRY", "URY", "VEN","SUR","GUY")
@@ -107,7 +85,7 @@ southamerica%>%
   filter(!is.na(ano)) %>%
   #mutate(ano = 1960) %>%
   ggplot() +
-  geom_sf(aes(fill=percentual_pib*100),  lwd=0.1, color ="#DCDCDC") +
+  geom_sf(aes(fill=percentual_pib*100),  lwd=0.1, color ="#F0F0F0") + #"#DCDCDC"
   geom_sf(data=france, fill = "#C0C0C0") +
   geom_sf(data=central_america, fill= "#C0C0C0" ) +
   geom_text(data= dados_textos,
@@ -135,5 +113,5 @@ southamerica%>%
   ) +
   facet_wrap(ano~.)
 
+```
 
-ggsave("mapa_com_caption.png", dpi = 300)
