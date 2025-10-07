@@ -48,7 +48,8 @@ receitas_primarias_totais<-
   pivot_wider(names_from = ano,
               values_from = valor,
               names_prefix = "total_receita_") %>%
-  mutate("total_receita_2023_corrigida" = `total_receita_2023` *(1+ipca_2024/100)) %>%
+  mutate(total_receita_2023_corrigida = `total_receita_2023` *(1+ipca_2024/100),
+         variacao_2024_2023_corrigida = ((total_receita_2024/total_receita_2023_corrigida)-1)) %>%
   pivot_longer(cols = -uf,
                names_to = "tipo_valor",
                values_to = "valor")
@@ -66,10 +67,15 @@ receitas_primarias_totais %>%
   pivot_wider(names_from = tipo_valor,
               values_from = valor) %>%
   mutate(condicao_I = total_receita_2024 < total_receita_2023_corrigida,
-         condicao_II = resultado_primario <0,
-         condicao_III = resultado_primario >0)
+         condicao_II = resultado_primario <=0 & !condicao_I,
+         condicao_III = resultado_primario >0 & !condicao_I) %>%
+  mutate(margem_despesa = case_when(
+    condicao_I ~ (ipca_2024/100),
+    condicao_II ~ (ipca_2024/100 + 0.5*variacao_2024_2023_corrigida),
+    condicao_III ~ (ipca_2024/100 + 0.7*variacao_2024_2023_corrigida)
+  ))
 
 diagnostico_art_setimo_propag %>%
-  writexl::write_xlsx("diagnostico_art_setimo_propag.xlsx")
+  writexl::write_xlsx("diagnostico_art_setimo_propag_new.xlsx")
   
 
