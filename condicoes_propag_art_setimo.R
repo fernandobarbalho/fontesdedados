@@ -77,5 +77,6 @@ receitas_primarias_totais %>%
 
 diagnostico_art_setimo_propag %>%
   writexl::write_xlsx("diagnostico_art_setimo_propag_new.xlsx")
+
   
 
