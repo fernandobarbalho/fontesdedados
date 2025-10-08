@@ -93,7 +93,7 @@ NROW(dados_grafico %>%
 
 
 
-cor_fundo <- "#F8F8F8"
+cor_fundo <-"#D0D0D0" #  "#F8F8F8"
 
 ```
 
@@ -112,10 +112,12 @@ dados_grafico %>%
             fontface = "bold") +
   geom_text(data = tibble(data = as.Date("2025-03-01"), variacao_referencia=33),
             aes(label =  str_wrap(paste0(numero_acima, " moedas com variação positiva"),15) ),
-            hjust = 0.5) +
+            hjust = 0.5,
+            color = "#324e5a") +
   geom_text(data = tibble(data = as.Date("2025-03-01"), variacao_referencia=-20),
             aes(label =  str_wrap(paste0(numero_abaixo, " moedas com variação negativa"),15) ),
-            hjust = 0.5) +
+            hjust = 0.5,
+            color = "#324e5a") +
   
   scale_color_manual(values = c("#74ACDF", "#009739", "#A51C30","#0033A0","#007A74", "#D52B1E")) +
   scale_y_continuous(breaks = 0) +
@@ -126,6 +128,7 @@ dados_grafico %>%
   theme(
     text = element_text(family = "Noto Sans", colour = "#324e5a", size =10),
     panel.grid = element_blank(),
+    panel.background = element_rect(fill = "#F5F5F5" ),
     plot.background = element_rect(fill =cor_fundo ),
     plot.title = element_text(size = 14, face = "bold"),
     plot.subtitle = element_text(size = 12, face = "italic")
