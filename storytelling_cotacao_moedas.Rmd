@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(readr)
 library(tidyverse)
 
+
 cotacao_moedas_dolar <- 
   read_csv("cotacao_moedas_dolar.csv")  %>%
   janitor::clean_names() %>%
@@ -23,6 +24,7 @@ cotacao_moedas_dolar <-
          data = paste0(data, "-01"),
          data = as.Date(data)) %>%
   bind_rows( tibble(country = "Argentina", data = as.Date("2025-09-01"), cotacao= 0.0007246377))  %>%
+  bind_rows( tibble(country = "China, People's Republic of", data = as.Date("2025-09-01"), cotacao= 0.1406687))  %>%
   filter(!is.na(cotacao ))
 
 cotacao_100<-
@@ -47,10 +49,13 @@ dados_grafico<-
   mutate(country = case_when(
     str_detect(country, "Rus") ~ "Rússia",
     str_detect(country, "Bra") ~ "Brasil",
+    str_detect(country, "Mex") ~ "México",
+    str_detect(country, "Col") ~ "Colômbia",
+    country == "China, People's Republic of" ~ "China",
     .default = country
   ))
 
-paises_sel <- c("Brasil", "Argentina","Rússia") 
+paises_sel <- c("Argentina", "Brasil",  "China",  "Colômbia",    "México",    "Rússia"  ) 
 
 dados_grafico_sel <-
   dados_grafico %>%
@@ -112,7 +117,7 @@ dados_grafico %>%
             aes(label =  str_wrap(paste0(numero_abaixo, " moedas com variação negativa"),15) ),
             hjust = 0.5) +
   
-  scale_color_manual(values = c("#74ACDF", "#009739", "#D52B1E")) +
+  scale_color_manual(values = c("#74ACDF", "#009739", "#A51C30","#0033A0","#007A74", "#D52B1E")) +
   scale_y_continuous(breaks = 0) +
   scale_x_date(breaks = c( as.Date("2024-12-01"),  as.Date("2025-09-01")),
                labels = scales::date_format(format = "%m/%Y"),
@@ -129,8 +134,8 @@ dados_grafico %>%
     x= "",
     y= "",
     title = paste0("Real: quarta maior valorização ante o dólar em 2025"),
-    subtitle = paste0("No acumulado do ano até setembro a moeda subiu ", round(variação_brasil,0) , "%"),
-    caption = "Fontes: FMI e Banco Central da Argentina. Elaboração: VPR/DIESO"
+    subtitle = paste0("Segunda maior valorização do G20 e maior da América Latina"),
+    caption = "Fontes: FMI, Banco Central da Argentina e Banco da China. Elaboração: VPR/DIESO"
   )
 
 ```
