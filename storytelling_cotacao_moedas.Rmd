@@ -135,7 +135,7 @@ dados_grafico %>%
     y= "",
     title = paste0("Real: quarta maior valorização ante o dólar em 2025"),
     subtitle = paste0("Segunda maior valorização do G20 e maior da América Latina"),
-    caption = "Fontes: FMI, Banco Central da Argentina e Banco da China. Elaboração: VPR/DIESO"
+    caption = "Fontes: FMI, Banco Central da Argentina e Banco da China. Elaboração: Fernando Barbalho"
   )
 
 ```
