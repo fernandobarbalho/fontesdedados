@@ -1,0 +1,127 @@
+---
+title: "story telling renda per-capita"
+author: "VPR-DIESO"
+date: '2025-10-09'
+output: html_document
+---
+
+---
+title: "renda per-capita dos países"
+author: "Fernando Almeida Barbalho"
+date: '2025-10-09'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+library(readxl)
+library(tidyverse)
+library(ggbeeswarm)
+
+classes_renda <- 
+  read_excel("CLASS_2025_10_07.xlsx") %>%
+  janitor::clean_names()
+
+gdp_per_capita_worldbank <- 
+  read_excel("gdp-per-capita-worldbank.xlsx") %>%
+  janitor::clean_names() %>%
+  filter(year==2024) %>%
+  rename(value = gdp_per_capita_ppp_constant_2021_international,
+         regiao = world_regions_according_to_owid)
+
+dados_grafico <-
+  gdp_per_capita_worldbank %>%
+  mutate(escopo = "mundo") %>%
+  inner_join(classes_renda) %>%
+  rename(regiao_wb = region  )
+
+
+dados_grafico_brasil<-
+  dados_grafico %>%
+  filter(code == "BRA") 
+
+cor_fundo <-"#D0D0D0" #  "#F8F8F8"
+
+```
+
+```{r fig.dpi= 300}
+
+dados_grafico %>%
+  ggplot(aes(x= escopo, y= value)) +
+  geom_boxplot(outlier.shape = "") +
+  geom_beeswarm(pch = 21, fill= "#E0E0E0") +
+  geom_point(data = dados_grafico_brasil, pch=21, fill = "red", size = 2)+
+  theme_light() +
+  theme(
+    text = element_text(family = "Noto Sans", colour = "#324e5a", size =10),
+    panel.grid = element_blank(),
+    panel.background = element_rect(fill = "#F5F5F5" ),
+    plot.background = element_rect(fill =cor_fundo ),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic")
+  ) +
+  labs(
+    x= "",
+    y= "",
+    title = "Lorem ipsum dolor sit amet",
+    subtitle = "consectetur adipiscing elit. Sed pulvinar",
+    caption = "Fontes: Our World in Data. Elaboração: VPR/DIESO"
+  )
+
+
+
+```
+
+```{r fig.dpi=300}
+dados_grafico %>%
+  ggplot(aes(x= regiao, y= value)) +
+  geom_boxplot(outlier.shape = "") +
+  geom_beeswarm(pch = 21, fill= "#E0E0E0") +
+  geom_point(data = dados_grafico_brasil, pch=21, fill = "red", size = 2)+
+  theme_light() +
+  theme(
+    text = element_text(family = "Noto Sans", colour = "#324e5a", size =10),
+    panel.grid = element_blank(),
+    panel.background = element_rect(fill = "#F5F5F5" ),
+    plot.background = element_rect(fill =cor_fundo ),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic")
+  ) +
+  labs(
+    x= "",
+    y= "",
+    title = "Lorem ipsum dolor sit amet",
+    subtitle = "consectetur adipiscing elit. Sed pulvinar",
+    caption = "Fontes: Our World in Data. Elaboração: VPR/DIESO"
+  )
+
+
+```
+
+```{r fig.dpi=300}
+dados_grafico %>%
+  filter(!is.na(income_group)) %>%
+  ggplot(aes(x= income_group, y= value)) +
+  geom_boxplot(outlier.shape = "") +
+  geom_beeswarm(pch = 21, fill= "#E0E0E0") +
+  geom_point(data = dados_grafico_brasil, pch=21, fill = "red", size = 2)+
+  theme_light() +
+  theme(
+    text = element_text(family = "Noto Sans", colour = "#324e5a", size =10),
+    panel.grid = element_blank(),
+    panel.background = element_rect(fill = "#F5F5F5" ),
+    plot.background = element_rect(fill =cor_fundo ),
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, face = "italic")
+  ) +
+  labs(
+    x= "",
+    y= "",
+    title = "Lorem ipsum dolor sit amet",
+    subtitle = "consectetur adipiscing elit. Sed pulvinar",
+    caption = "Fontes: Our World in Data. Elaboração: VPR/DIESO"
+  )
+
+```
+
